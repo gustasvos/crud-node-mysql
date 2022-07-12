@@ -2,12 +2,12 @@ const express = require('express')
 const app = express()
 const port = 4000
 
-const productRoutes = require('./routes/product')
+const personRoutes = require('./routes/person')
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-app.use(productRoutes)
+app.use(personRoutes)
 
 // 404
 app.use(async (req,res) => {

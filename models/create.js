@@ -1,25 +1,21 @@
 const db = require('../database')
 
-class InsertBody {
-    async InsertData() {
+class CreateBody {
+    async CreateData() {
         const Mysql = new db()
         const getConnection = await Mysql.connection()
 
         getConnection.connect()
         // QUERYS
 
-        await getConnection.query(`INSERT INTO Persons (${1}, AAA, sdsad, sdsadsf22, cidade)`)
+        await getConnection.query('CREATE TABLE Persons (PersonID int, LastName varchar(255),FirstName varchar(255),Address varchar(255),City varchar(255));')
         console.log('conectado')
         getConnection.end()
         return 
     }
 }
 
-module.exports = InsertBody
-
-
-// INSERT INTO general_seats_update (numero_cadeira, semana, status_cadeira, ultima_atualizacao, dias_vacancia) 
-//           VALUES ('${body.numero}', '${body.semana}', '${body.status}', '${body.ultima_atualizacao}', ${body.vacancia});
+module.exports = CreateBody
 
 // let teste = new InsertBody()
 // teste.insertData()
