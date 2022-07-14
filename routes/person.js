@@ -3,6 +3,7 @@ const router = express.Router()
 
 const CreateBody = require('../models/create')
 const InsertBody = require('../models/insert')
+const DeleteBody = require('../models/delete')
 
 
 router.get('/person', async (req, res) => {
@@ -14,15 +15,15 @@ router.post('/person', async (req, res) => {
     let create = new CreateBody()
     
     await create.CreateData()
-    console.log('aaa')
+    console.log('Tabela criada')
     res.send()
 })
 
 router.post('/person/insert', async (req, res) => {
     let insert = new InsertBody()
     
-    await insert.InsertData()
-    console.log('aaa')
+    await insert.InsertData(req.body)
+    console.log('Dados inseridos')
     res.send()
 })
 
@@ -32,9 +33,14 @@ router.put('/person', async (req, res) => {
 })
 
 // DELETE
-router.delete('/produt', async (req, res) => {
+router.delete('/person', async (req, res) => {
+    let deleteitem = new DeleteBody()
+
+    await deleteitem.deleteAll()
+    console.log('delete feito')
     res.send()
 })
 
 
 module.exports = router
+

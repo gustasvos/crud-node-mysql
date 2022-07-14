@@ -1,14 +1,18 @@
 const db = require('../database')
 
 class InsertBody {
-    async InsertData() {
+    async InsertData(body) {
         const Mysql = new db()
         const getConnection = await Mysql.connection()
 
         getConnection.connect()
-        // QUERYS
+        
+        body.persons.forEach(e => {
+            getConnection.query(`INSERT INTO persons (LastName, FirstName, Address, City) VALUES ("${e.LastName}", "${e.FirstName}", "${e.Address}", "${e.City}")`)
+        });
 
-        await getConnection.query(`INSERT INTO Persons (${1}, AAA, sdsad, sdsadsf22, cidade)`)
+        // QUERYS
+        // await getConnection.query(`INSERT INTO persons (PersonID, LastName, FirstName, Address, City) VALUES (1, "AAA", "sdsad", "sdsadsf22", "cidade")`)
         console.log('conectado')
         getConnection.end()
         return 
