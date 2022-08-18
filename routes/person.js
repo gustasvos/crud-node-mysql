@@ -14,7 +14,7 @@ router.get('/person', async (req, res) => {
 router.post('/person', async (req, res) => {
     let create = new CreateBody()
     
-    await create.CreateData()
+    await create.createData()
     console.log('Tabela criada')
     res.send()
 })
@@ -22,7 +22,7 @@ router.post('/person', async (req, res) => {
 router.post('/person/insert', async (req, res) => {
     let insert = new InsertBody()
     
-    await insert.InsertData(req.body)
+    await insert.insertData(req.body)
     console.log('Dados inseridos')
     res.send()
 })

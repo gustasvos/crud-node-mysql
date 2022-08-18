@@ -1,14 +1,14 @@
 const db = require('../database')
 
 class CreateBody {
-    async CreateData() {
+    async createData() {
         const Mysql = new db()
         const getConnection = await Mysql.connection()
 
         getConnection.connect()
         // QUERYS
 
-        await getConnection.query('CREATE TABLE persons (PersonID int NOT NULL AUTO_INCREMENT, LastName varchar(255), FirstName varchar(255),Address varchar(255),City varchar(255), UNIQUE KEY (PersonID));')
+        await getConnection.query('CREATE TABLE IF NOT EXISTS persons (PersonID int NOT NULL AUTO_INCREMENT, LastName varchar(255), FirstName varchar(255),Address varchar(255),City varchar(255), UNIQUE KEY (PersonID));')
         console.log('conectado')
         getConnection.end()
         return 
